@@ -5,6 +5,7 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.UrgencyHook
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.SetWMName
+import XMonad.Hooks.ICCCMFocus
 import XMonad.Layout.PerWorkspace
 import XMonad.Layout.NoBorders
 import XMonad.Layout.IM
@@ -25,7 +26,8 @@ main = do
 --        , workspaces         = myWorkspaces
         , manageHook         = ((className =? "java-lang-Thread") >>= return . not --> manageHook desktopConfig) <+> myManageHook
         , layoutHook         = smartBorders $ avoidStruts $ myLayoutHook
-        , startupHook        = myStartupHook } 
+        , startupHook        = myStartupHook
+        , logHook            = takeTopFocus } 
 
 myKeys (XConfig {modMask = modm}) = M.fromList $
     [ ((modm, xK_p)              , shellPrompt myXPConfig)
