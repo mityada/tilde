@@ -8,13 +8,14 @@ import XMonad.Hooks.SetWMName
 import XMonad.Hooks.ICCCMFocus
 import XMonad.Layout.PerWorkspace
 import XMonad.Layout.NoBorders
-import XMonad.Layout.IM
 import XMonad.Util.Run (spawnPipe)
 import XMonad.Prompt
 import XMonad.Prompt.Shell
 
 import Data.Ratio ((%))
 import qualified Data.Map as M
+
+import IM
 
 main = do
     xmonad =<< statusBar "xmobar" myPP toggleStrutsKey desktopConfig
@@ -47,13 +48,13 @@ myManageHook = composeAll
     , className =? "stalonetray"    --> doIgnore
     , className =? "Wicd-kde" --> doFloat ]
 
-myLayoutHook = onWorkspace "3" (gridIM (1%7) rosterProperty) $ layoutHook desktopConfig
+myLayoutHook = onWorkspace "3" (gridIM (1%6) rosterProperty) $ layoutHook desktopConfig
 
-rosterProperty = psiRoster 
+rosterProperty = [psiRoster, skypeRoster]
 
 psiRoster = (And (ClassName "psi") (Resource "main"))
 
-skypeRoster = (And (ClassName "Skype") (Not (Resource "ConversationsWindow")))
+skypeRoster = (And (ClassName "Skype") (Title "mityada - Skype™"))
 
 myStartupHook = do
     setWMName "LG3D"
