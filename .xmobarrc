@@ -1,16 +1,14 @@
 Config { font = "-xos4-terminus-medium-r-normal-*-14-*-*-*-*-*-*-*"
        , bgColor = "black"
        , fgColor = "#afafaf"
-       , position = Static { xpos = 0, ypos = -6, width = 1600, height = 27 }
+       , position = Static { xpos = 0, ypos = -6, width = 1680, height = 27 }
        , border = BottomBM 0
        , borderColor = "#113354"
        , lowerOnStart = True
        , commands = [ Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
-                    , Run Wireless "wlan0" ["-t", "<fc=#ffffff><essid> <quality>%</fc>"] 100
-                    , Run Battery ["-t", "<left><acstatus>", "-L", "15", "-H", "30", "--low", "#f92672", "--normal", "#fd971f", "--high", "#ffffff", "--", "-O", "<fc=#a6e22e>%</fc>", "-o", "<fc=#f92672>%</fc>", "-f", "ACAD/online"] 100
                     , Run Kbd [("us", "<fc=#fff>en</fc>"), ("ru", "<fc=#fff>ru</fc>")]
                     , Run StdinReader ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = " %StdinReader% }{ %wlan0wi% | %battery% | %kbd% | <fc=#ffffff>%date%</fc> "
+       , template = " %StdinReader% }{ %kbd% | <fc=#ffffff>%date%</fc> "
        }
