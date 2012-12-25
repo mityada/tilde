@@ -24,17 +24,25 @@ main = do
         , focusedBorderColor = "#6587a8"
         , modMask            = mod4Mask
         , keys               = myKeys <+> keys desktopConfig
---        , workspaces         = myWorkspaces
-        , manageHook         = ((className =? "java-lang-Thread") >>= return . not --> manageHook desktopConfig) <+> myManageHook
+        , manageHook         = myManageHook
         , layoutHook         = smartBorders $ avoidStruts $ myLayoutHook
         , startupHook        = myStartupHook
         , logHook            = takeTopFocus } 
 
 myKeys (XConfig {modMask = modm}) = M.fromList $
-    [ ((modm, xK_p)              , shellPrompt myXPConfig)
-    , ((modm .|. shiftMask, xK_q), spawn "dbus-send --print-reply --dest=org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout int32:-1 int32:-1 int32:-1") ]
-
--- myWorkspaces = ["1:term", "2:web", "3:im", "4:other"] ++ map show [5..9]
+    [ ((modm, xK_p), shellPrompt myXPConfig)
+    -- XF86AudioLowerVolume
+    , ((0, 0x1008ff11), spawn "amixer -q set Master 1-")
+    -- XF86AudioRaiseVolume
+    , ((0, 0x1008ff13), spawn "amixer -q set Master 1+ unmute")
+    -- XF86AudioPlay
+    , ((0, 0x1008ff14), spawn "mocp -U")
+    -- XF86AudioStop
+    , ((0, 0x1008ff15), spawn "mocp -P")
+    -- XF86AudioPrev
+    , ((0, 0x1008ff16), spawn "mocp -r")
+    -- XF86AudioNext
+    , ((0, 0x1008ff17), spawn "mocp -f") ]
 
 myManageHook = composeAll
     [ isFullscreen                  --> doFullFloat
