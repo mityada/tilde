@@ -1,0 +1,6 @@
+XTerm*foreground: #afafaf
+XTerm*background: #000000
+
+XTerm*faceName: terminus:normal:pixelsize=14
+
+Xcursor.theme: Vanilla-DMZ
