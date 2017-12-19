@@ -9,8 +9,9 @@ Config { font = "-xos4-terminus-medium-r-normal-*-14-*-*-*-*-*-*-*"
                     , Run Wireless "wlan0" ["-t", "<fc=#ffffff><essid> <quality>%</fc>"] 100
                     , Run Battery ["-t", "<left><acstatus>", "-L", "15", "-H", "30", "--low", "#f92672", "--normal", "#fd971f", "--high", "#ffffff", "--", "-O", "<fc=#a6e22e>%</fc>", "-o", "<fc=#f92672>%</fc>", "-f", "ACAD/online"] 100
                     , Run Kbd [("us", "<fc=#fff>en</fc>"), ("ru", "<fc=#fff>ru</fc>")]
+                    , Run Com "mocp-control" ["status"] "mocp" 100
                     , Run StdinReader ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = " %StdinReader% }{ %wlan0wi% | %battery% | %kbd% | <fc=#ffffff>%date%</fc> "
+       , template = " %StdinReader% }{ %mocp% | %wlan0wi% | %battery% | %kbd% | <fc=#ffffff>%date%</fc>   "
        }
