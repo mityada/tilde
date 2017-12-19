@@ -9,3 +9,4 @@ xterm &
 firefox &
 psi-plus &
 xflux -l 59.7 -g 30.3 -k 3000
+stalonetray &
