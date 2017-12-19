@@ -85,7 +85,7 @@ myPP = xmobarPP
     , ppSep     = xmobarColor "#6587a8" "" " >> " }
 
 myXPConfig = defaultXPConfig
-    { font = "-xos4-terminus-medium-r-normal-*-14-*-*-*-*-*-*-*"
+    { font = "xft:xos4 Terminus:style=Regular:pixelsize=14"
     , bgColor = "black"
     , fgColor = "#afafaf"
     , fgHLight = "white"

@@ -1,4 +1,4 @@
-Config { font = "-xos4-terminus-medium-r-normal-*-14-*-*-*-*-*-*-*"
+Config { font = "xft:xos4 Terminus:style=Regular:pixelsize=14"
        , bgColor = "black"
        , fgColor = "#afafaf"
        , position = Top
@@ -6,6 +6,7 @@ Config { font = "-xos4-terminus-medium-r-normal-*-14-*-*-*-*-*-*-*"
        , borderColor = "#113354"
        , lowerOnStart = True
        , commands = [ Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
+                    , Run Com "env" ["TZ=EST5EDT", "date", "+%H:%M ET"] "et" 10
                     , Run Wireless "wlan0" ["-t", "<fc=#ffffff><essid> <quality>%</fc>"] 100
                     , Run Battery ["-t", "<left><acstatus>", "-L", "15", "-H", "30", "--low", "#f92672", "--normal", "#fd971f", "--high", "#ffffff", "--", "-O", "<fc=#a6e22e>%</fc>", "-o", "<fc=#f92672>%</fc>", "-f", "ACAD/online"] 100
                     , Run Kbd [("us", "<fc=#fff>en</fc>"), ("ru", "<fc=#fff>ru</fc>")]
