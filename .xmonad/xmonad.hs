@@ -15,6 +15,8 @@ import XMonad.Prompt
 import XMonad.Prompt.Shell
 import XMonad.Actions.SpawnOn
 
+import Graphics.X11.ExtraTypes.XF86
+
 import Data.Ratio ((%))
 import qualified Data.Map as M
 
@@ -35,14 +37,18 @@ main = do
 
 myKeys (XConfig {modMask = modm}) = M.fromList $
     [ ((modm, xK_p), shellPromptHere myXPConfig)
-    , ((modm, xK_x), spawn "light-locker-command -l")
+    , ((modm, xK_x), spawn "dm-tool lock")
     , ((0, xK_Print), spawn "import -window root ~/Pictures/screenshots/$(date '+%Y%m%d-%H%M%S').png")
+    -- XF86MonBrightnessUp
+    , ((0, 0x1008ff02), spawn "xbacklight -inc 5")
+    -- XF86MonBrightnessDown
+    , ((0, 0x1008ff03), spawn "xbacklight -dec 5")
     -- XF86AudioLowerVolume
-    , ((0, 0x1008ff11), spawn "amixer -q set Master 1%-")
+    , ((0, 0x1008ff11), spawn "pactl set-sink-volume combined -1%")
     -- XF86AudioRaiseVolume
-    , ((0, 0x1008ff13), spawn "amixer -q set Master 1%+ unmute")
+    , ((0, 0x1008ff13), spawn "pactl set-sink-volume combined +1%")
     -- XF86AudioMute
-    , ((0, 0x1008ff12), spawn "amixer -q set Master toggle")
+    , ((0, 0x1008ff12), spawn "pactl set-sink-mute combined toggle")
     -- XF86AudioPlay
     , ((0, 0x1008ff14), spawn "mocp-control play")
     -- XF86AudioStop
@@ -53,21 +59,22 @@ myKeys (XConfig {modMask = modm}) = M.fromList $
     , ((0, 0x1008ff17), spawn "mocp -f") ]
 
 myManageHook = composeAll
-    [ isFullscreen                  --> doFullFloat
-    , className =? "xterm"          --> doShift "1"
-    , className =? "Firefox"        --> doShift "2"
-    , className =? "Skype"          --> doShift "3"
-    , className =? "Psi-plus"       --> doShift "3"
-    , className =? "qTox"           --> doShift "3"
-    , className =? "ViberPC"        --> doShift "3"
-    , className =? "Logic"          --> doIgnore ]
+    [ isFullscreen                   --> doFullFloat
+    , className =? "xterm"           --> doShift "1"
+    , className =? "Firefox"         --> doShift "2"
+    , className =? "Skype"           --> doShift "3"
+    , className =? "Psi+"            --> doShift "3"
+    , className =? "qTox"            --> doShift "3"
+    , className =? "ViberPC"         --> doShift "3"
+    , className =? "TelegramDesktop" --> doShift "3"
+    , className =? "Logic"           --> doIgnore ]
     -- , className =? "Gimp"           --> doFloat ]
 
 myLayoutHook = onWorkspace "3" (reflectHoriz $ gridIM (1%6) rosterProperty) $ layoutHook desktopConfig
 
-rosterProperty = [psiRoster, skypeRoster, toxRoster]
+rosterProperty = [psiRoster] -- , skypeRoster, toxRoster]
 
-psiRoster = (And (ClassName "Psi-plus") (Resource "main"))
+psiRoster = (And (Or (ClassName "Psi") (ClassName "Psi+")) (Resource "main"))
 
 skypeRoster = (And (ClassName "Skype") (Title "mityada - Skype™"))
 
