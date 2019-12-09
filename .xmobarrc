@@ -1,4 +1,4 @@
-Config { font = "xft:xos4 Terminus:style=Regular:pixelsize=14"
+Config { font = "xft:xos4 Terminus:style=Regular:pixelsize=24"
        , bgColor = "black"
        , fgColor = "#afafaf"
        , position = Top

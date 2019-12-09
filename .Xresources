@@ -1,6 +1,8 @@
 XTerm*foreground: #afafaf
 XTerm*background: #000000
 
-XTerm*faceName: xos4 Terminus:style=Regular:pixelsize=14
+XTerm*faceName: xos4 Terminus:style=Regular:pixelsize=24
 
 Xcursor.theme: Vanilla-DMZ
+
+Xft.dpi: 157

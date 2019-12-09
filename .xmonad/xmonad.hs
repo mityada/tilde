@@ -85,13 +85,13 @@ myPP = xmobarPP
     , ppSep     = xmobarColor "#6587a8" "" " >> " }
 
 myXPConfig = defaultXPConfig
-    { font = "xft:xos4 Terminus:style=Regular:pixelsize=14"
+    { font = "xft:xos4 Terminus:style=Regular:pixelsize=24"
     , bgColor = "black"
     , fgColor = "#afafaf"
     , fgHLight = "white"
     , bgHLight = "black"
     , borderColor = "#113354"
-    , height = 21
+    , height = 32
     }
 
 toggleStrutsKey XConfig{modMask = modm} = (modm, xK_b )
