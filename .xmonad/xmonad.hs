@@ -61,7 +61,7 @@ myKeys (XConfig {modMask = modm}) = M.fromList $
 myManageHook = composeAll
     [ isFullscreen                   --> doFullFloat
     , className =? "xterm"           --> doShift "1"
-    , className =? "Firefox"         --> doShift "2"
+    , className =? "firefox"         --> doShift "2"
     , className =? "Skype"           --> doShift "3"
     , className =? "Psi+"            --> doShift "3"
     , className =? "qTox"            --> doShift "3"
