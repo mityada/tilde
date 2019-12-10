@@ -8,12 +8,12 @@ Config { font = "xft:xos4 Terminus:style=Regular:pixelsize=24"
        , pickBroadest = True
        , commands = [ Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
                     , Run Com "env" ["TZ=America/New_York", "date", "+%H:%M ET"] "et" 10
-                    , Run Wireless "wlp4s0" ["-t", "<fc=#ffffff><essid> <quality>%</fc>"] 100
+                    , Run Wireless "wlp2s0" ["-t", "<fc=#ffffff><essid> <quality>%</fc>"] 100
                     , Run Battery ["-t", "<left><acstatus>", "-L", "15", "-H", "30", "--low", "#f92672", "--normal", "#fd971f", "--high", "#ffffff", "--", "-O", "<fc=#a6e22e>%</fc>", "-o", "<fc=#f92672>%</fc>", "-f", "ACAD/online"] 100
                     , Run Kbd [("us", "<fc=#fff>en</fc>"), ("ru", "<fc=#fff>ru</fc>")]
                     , Run Com "mocp-control" ["status"] "mocp" 100
                     , Run StdinReader ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = " %StdinReader% }{ | %wlp4s0wi% | %battery% | %kbd% | <fc=#ffffff>%date%</fc> %et% "
+       , template = " %StdinReader% }{ | %wlp2s0wi% | %battery% | %kbd% | <fc=#ffffff>%date%</fc> %et% "
        }
