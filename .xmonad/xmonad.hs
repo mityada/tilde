@@ -40,6 +40,7 @@ main = do
 myKeys (XConfig {modMask = modm}) = M.fromList $
     [ ((modm, xK_p), shellPromptHere myXPConfig)
     , ((modm, xK_x), spawn "dm-tool lock")
+    , ((modm, xK_a), spawn "autorandr -c")
     , ((0, xK_Print), spawn "import -window root ~/Pictures/screenshots/$(date '+%Y%m%d-%H%M%S').png")
     -- XF86MonBrightnessUp
     , ((0, 0x1008ff02), spawn "xbacklight -inc 5")
