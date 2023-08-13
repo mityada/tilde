@@ -1,3 +1,5 @@
+{-# OPTIONS_GHC -Wno-deprecations #-}
+
 import XMonad
 import XMonad.Config.Desktop
 import XMonad.Hooks.ManageDocks
@@ -91,7 +93,7 @@ myPP = xmobarPP
     , ppLayout  = xmobarColor "#ffffff" ""
     , ppSep     = xmobarColor "#6587a8" "" " >> " }
 
-myXPConfig = defaultXPConfig
+myXPConfig = def
     { font = "xft:xos4 Terminus:style=Regular:pixelsize=24"
     , bgColor = "black"
     , fgColor = "#afafaf"
