@@ -1,3 +1,5 @@
+XTerm.termName: xterm-256color
+
 XTerm*foreground: #afafaf
 XTerm*background: #000000
 
