@@ -100,7 +100,7 @@ myPP = xmobarPP
     , ppSep     = xmobarColor "#6587a8" "" " >> " }
 
 myXPConfig = def
-    { font = "xft:xos4 Terminus:style=Regular:pixelsize=24"
+    { font = "xft:Terminus:style=Regular:pixelsize=32"
     , bgColor = "black"
     , fgColor = "#afafaf"
     , fgHLight = "white"

@@ -1,7 +1,7 @@
-Config { font = "xft:xos4 Terminus:style=Regular:pixelsize=24"
+Config { font = "Terminus 24"
        , bgColor = "black"
        , fgColor = "#afafaf"
-       , position = Top
+       , position = TopH 32
        , border = BottomBM 0
        , borderColor = "#113354"
        , lowerOnStart = True
