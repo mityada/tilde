@@ -31,6 +31,7 @@ main = do
         , focusedBorderColor = "#6587a8"
         , modMask            = mod4Mask
         , keys               = myKeys <+> keys desktopConfig
+        , mouseBindings      = myMouseBindings <+> mouseBindings desktopConfig
         , manageHook         = myManageHook
         , layoutHook         = smartBorders $ avoidStruts $ myLayoutHook
         , startupHook        = myStartupHook
@@ -60,6 +61,10 @@ myKeys (XConfig {modMask = modm}) = M.fromList $
     , ((0, 0x1008ff16), spawn "mocp -r")
     -- XF86AudioNext
     , ((0, 0x1008ff17), spawn "mocp -f") ]
+
+myMouseBindings (XConfig {modMask = modm}) = M.fromList $
+    [ ((0, 8), \_ -> spawn "pactl set-sink-volume combined -1%")
+    , ((0, 9), \_ -> spawn "pactl set-sink-volume combined +1%") ]
 
 myManageHook = composeAll
     [ isFullscreen                   --> doFullFloat
