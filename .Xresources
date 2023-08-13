@@ -7,4 +7,8 @@ XTerm*faceName: xos4 Terminus:style=Regular:pixelsize=24
 
 Xcursor.theme: Vanilla-DMZ
 
-Xft.dpi: 157
+! T27p
+!Xft.dpi: 168
+
+! T27h
+Xft.dpi: 109
